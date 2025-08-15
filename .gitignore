@@ -1,3 +1,7 @@
+# Ignore SecLists wordlists
+seclists/
+SecLists/
+
 # Dependency folders
 venv/
 vendor/
