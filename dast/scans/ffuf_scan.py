@@ -13,6 +13,30 @@ logger = logging.getLogger(__name__)
 # Dynamically resolve path to wordlist relative to this script
 DEFAULT_WORDLIST = os.path.join(os.path.dirname(__file__), "SecLists", "Discovery", "Web-Content", "common.txt")
 
+def ensure_seclists():
+    """
+    Ensure SecLists exists locally. If not found, clone it automatically.
+    Checks both the script directory and /usr/share/seclists.
+    """
+    local_path = os.path.join(os.path.dirname(__file__), "SecLists")
+    system_path = "/usr/share/seclists"
+
+    if os.path.exists(local_path) or os.path.exists(system_path):
+        logger.info("[*] SecLists found.")
+        return
+
+    logger.info("[*] SecLists not found. Downloading...")
+    try:
+        subprocess.run([
+            "git", "clone", "--depth=1",
+            "https://github.com/danielmiessler/SecLists.git",
+            local_path
+        ], check=True)
+        logger.info("[*] SecLists successfully downloaded.")
+    except Exception as e:
+        logger.error(f"Failed to download SecLists: {e}")
+        raise RuntimeError("SecLists installation failed, FFUF scan cannot proceed.")
+
 class FFUFScanner:
     WORDLISTS = [
         os.path.join(os.path.dirname(__file__), "SecLists", "Discovery", "Web-Content", "common.txt"),
@@ -27,6 +51,9 @@ class FFUFScanner:
         :param url: The URL to scan.
         :param wordlist: The path to the wordlist file.
         """
+        # Ensure Seclists is available before continuing
+        ensure_seclists()
+
         self.url = self._sanitize_url(url)
         self.wordlist = wordlist or self.get_default_wordlist()
         self.output_file = "ffuf_output.json"
@@ -54,7 +81,7 @@ class FFUFScanner:
                 logger.warning(f"Skipping missing wordlist: {wordlist_path}")
                 continue
 
-            logger.info(f"Running FFUF on: {self.url} using wordlist: {os.path.basename(wordlist_path)}")
+            logger.info(f"Running FFUF on: {self.url} using wordlist {os.path.basename(wordlist_path)}")
             command = [
                 "ffuf",
                 "-u", f"{self.url}/FUZZ",
@@ -135,3 +162,4 @@ if __name__ == "__main__":
         print(json.dumps(endpoints, indent=2))
     except Exception as e:
         logger.error(f"DAST FFUF scan failed: {e}")
+
