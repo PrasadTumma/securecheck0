@@ -1,0 +1,6 @@
+{
+"ffuf_wordlist": "SecLists/Discovery/Web-Content/common.txt"
+}
+{
+"nuclei_templates_path": "nuclei-templates/"
+}

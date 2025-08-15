@@ -1,0 +1,368 @@
+{
+  "cwes": [
+    {
+      "cwe_id": "CWE-20",
+      "name": "Improper Input Validation",
+      "description": "This weakness occurs when an application does not properly validate input, which can lead to unexpected behavior or security vulnerabilities.",
+      "static_fix": "Implement strict input validation rules and ensure that all inputs are checked against expected formats and types.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/20.html"
+    },
+    {
+      "cwe_id": "CWE-22",
+      "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+      "description": "This weakness allows an attacker to access files and directories that are stored outside the intended directory.",
+      "static_fix": "Use a whitelist of allowed paths and validate user input to ensure it does not contain any traversal sequences.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/22.html"
+    },
+    {
+      "cwe_id": "CWE-78",
+      "name": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')",
+      "description": "This weakness allows an attacker to execute arbitrary operating system commands through an application by manipulating input.",
+      "static_fix": "Avoid using user input in system commands. If necessary, use parameterization and input validation with allowlisting.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/78.html"
+    },
+    {
+      "cwe_id": "CWE-79",
+      "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+      "description": "This weakness occurs when an application includes untrusted data in a web page without proper validation or escaping, allowing attackers to execute scripts in the user's browser.",
+      "static_fix": "Always sanitize and encode user inputs before rendering them in web pages. Use libraries that automatically handle escaping for you.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/79.html"
+    },
+    {
+      "cwe_id": "CWE-88",
+      "name": "Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')",
+      "description": "This weakness allows manipulation of command arguments through input.",
+      "static_fix": "Use parameterized commands or escape/validate all arguments thoroughly.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/88.html"
+    },
+    {
+      "cwe_id": "CWE-89",
+      "name": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
+      "description": "This weakness allows an attacker to interfere with the queries that an application makes to its database, potentially leading to unauthorized access to data.",
+      "static_fix": "Use prepared statements and parameterized queries to ensure that user input is treated as data, not executable code.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/89.html"
+    },
+    {
+      "cwe_id": "CWE-90",
+      "name": "Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')",
+      "description": "This weakness allows attackers to manipulate LDAP queries through input.",
+      "static_fix": "Use parameterized LDAP queries and validate all input used in queries.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/90.html"
+    },
+    {
+      "cwe_id": "CWE-94",
+      "name": "Improper Control of Generation of Code ('Code Injection')",
+      "description": "This weakness occurs when an application generates code from user-controlled input without proper validation.",
+      "static_fix": "Avoid dynamically generating code from user input. If necessary, use strict input validation and sandboxing techniques.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/94.html"
+    },
+    {
+      "cwe_id": "CWE-96",
+      "name": "Improper Neutralization of Directives in Statically Saved Code (aka 'Script Injection')",
+      "description": "This weakness occurs when untrusted data is embedded directly into static code files without proper sanitization, leading to potential script execution.",
+      "static_fix": "Avoid including untrusted data in static code. Use proper templating engines that auto-escape content, and validate all inputs before saving them to files.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/96.html"
+    },
+    {
+      "cwe_id": "CWE-116",
+      "name": "Improper Encoding or Escaping of Output",
+      "description": "This weakness occurs when output isn't properly encoded for the target interpreter.",
+      "static_fix": "Always encode output appropriately for its context (HTML, JavaScript, etc.).",
+      "reference_url": "https://cwe.mitre.org/data/definitions/116.html"
+    },
+    {
+      "cwe_id": "CWE-119",
+      "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer",
+      "description": "This weakness occurs when a program does not properly restrict operations to the boundaries of a memory buffer, leading to buffer overflows.",
+      "static_fix": "Use safe functions that limit the amount of data written to buffers and always check buffer sizes before writing.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/119.html"
+    },
+    {
+      "cwe_id": "CWE-125",
+      "name": "Out-of-bounds Read",
+      "description": "This weakness occurs when a program reads data outside the boundaries of allocated memory, which can lead to information disclosure or crashes.",
+      "static_fix": "Always validate the size of data being accessed and ensure that all memory accesses are within allocated bounds.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/125.html"
+    },
+    {
+      "cwe_id": "CWE-190",
+      "name": "Integer Overflow or Wraparound",
+      "description": "This weakness occurs when integer operations exceed maximum values.",
+      "static_fix": "Use bounds checking and safe math operations, especially for memory allocation.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/190.html"
+    },
+    {
+      "cwe_id": "CWE-200",
+      "name": "Information Exposure",
+      "description": "This weakness occurs when an application unintentionally exposes sensitive information to unauthorized users.",
+      "static_fix": "Implement proper access controls and ensure that sensitive data is only accessible to authorized users.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/200.html"
+    },
+    {
+      "cwe_id": "CWE-287",
+      "name": "Improper Authentication",
+      "description": "This weakness occurs when an application does not properly verify the identity of users.",
+      "static_fix": "Implement strong authentication mechanisms with proper session management and multi-factor authentication where appropriate.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/287.html"
+    },
+    {
+      "cwe_id": "CWE-295",
+      "name": "Improper Certificate Validation",
+      "description": "This weakness occurs when certificate validation is incomplete or incorrect.",
+      "static_fix": "Implement proper certificate chain validation including hostname verification.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/295.html"
+    },
+    {
+      "cwe_id": "CWE-306",
+      "name": "Missing Authentication for Critical Function",
+      "description": "This weakness occurs when an application does not require authentication for critical functions, allowing unauthorized access.",
+      "static_fix": "Ensure that all critical functions require proper authentication and authorization checks.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/306.html"
+    },
+    {
+      "cwe_id": "CWE-310",
+      "name": "Cryptographic Issues",
+      "description": "A broad category encompassing weaknesses related to cryptography.",
+      "static_fix": "Use well-vetted cryptographic libraries, keep them updated, and follow industry best practices for key management and algorithm selection.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/310.html"
+    },
+    {
+      "cwe_id": "CWE-312",
+      "name": "Cleartext Storage of Sensitive Information",
+      "description": "This weakness occurs when sensitive information is stored in plaintext.",
+      "static_fix": "Always encrypt sensitive data at rest and use secure hashing algorithms for passwords.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/312.html"
+    },
+    {
+      "cwe_id": "CWE-313",
+      "name": "Cleartext Storage in a File or on Disk",
+      "description": "Specific version of CWE-312 where sensitive data is stored in plaintext files.",
+      "static_fix": "Encrypt sensitive files and implement proper access controls.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/313.html"
+    },
+    {
+      "cwe_id": "CWE-319",
+      "name": "Cleartext Transmission of Sensitive Information",
+      "description": "This weakness occurs when sensitive data is sent over unencrypted channels.",
+      "static_fix": "Always use encrypted protocols (HTTPS, TLS) for transmitting sensitive data.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/319.html"
+    },
+    {
+      "cwe_id": "CWE-322",
+      "name": "Key Exchange without Entity Authentication",
+      "description": "This weakness occurs when cryptographic keys are exchanged without proper authentication.",
+      "static_fix": "Implement proper authentication mechanisms before key exchange using digital signatures or certificates.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/322.html"
+    },
+    {
+      "cwe_id": "CWE-326",
+      "name": "Inadequate Encryption Strength",
+      "description": "This weakness occurs when the encryption algorithm or key strength is insufficient.",
+      "static_fix": "Use strong cryptographic algorithms with appropriate key lengths according to current standards.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/326.html"
+    },
+    {
+      "cwe_id": "CWE-327",
+      "name": "Use of a Broken or Risky Cryptographic Algorithm",
+      "description": "This weakness occurs when an application uses a cryptographic algorithm that is known to be weak or broken.",
+      "static_fix": "Use strong, industry-standard cryptographic algorithms and libraries that are regularly updated.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/327.html"
+    },
+    {
+      "cwe_id": "CWE-330",
+      "name": "Use of Insufficiently Random Values",
+      "description": "This weakness occurs when cryptographic operations use predictable or weak random number generation.",
+      "static_fix": "Use cryptographically secure random number generators for security-sensitive operations.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/330.html"
+    },
+    {
+      "cwe_id": "CWE-347",
+      "name": "Improper Verification of Cryptographic Signature",
+      "description": "This weakness occurs when digital signatures are not properly verified.",
+      "static_fix": "Implement proper signature verification routines and validate the entire certificate chain.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/347.html"
+    },
+    {
+      "cwe_id": "CWE-352",
+      "name": "Cross-Site Request Forgery (CSRF)",
+      "description": "This weakness allows an attacker to trick a user into submitting a request that they did not intend to make.",
+      "static_fix": "Implement anti-CSRF tokens in forms and validate them on the server side to ensure requests are legitimate.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/352.html"
+    },
+    {
+      "cwe_id": "CWE-384",
+      "name": "Session Fixation",
+      "description": "This weakness allows an attacker to fixate a session identifier before login.",
+      "static_fix": "Always generate new session IDs after authentication and invalidate old ones.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/384.html"
+    },
+    {
+      "cwe_id": "CWE-400",
+      "name": "Uncontrolled Resource Consumption ('Resource Exhaustion')",
+      "description": "This weakness allows an attacker to consume system resources excessively.",
+      "static_fix": "Implement resource limits, quotas, and throttling mechanisms.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/400.html"
+    },
+    {
+      "cwe_id": "CWE-416",
+      "name": "Use After Free",
+      "description": "This weakness occurs when a program continues to use a pointer after the memory it points to has been freed.",
+      "static_fix": "Set pointers to NULL after freeing memory to prevent accidental use after free.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/416.html"
+    },
+    {
+      "cwe_id": "CWE-434",
+      "name": "Unrestricted Upload of File with Dangerous Type",
+      "description": "This weakness allows attackers to upload potentially dangerous files.",
+      "static_fix": "Implement strict file type verification, use allowlisting, store files with safe extensions.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/434.html"
+    },
+    {
+      "cwe_id": "CWE-444",
+      "name": "Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling')",
+      "description": "This weakness allows HTTP request smuggling between front-end and back-end servers.",
+      "static_fix": "Configure HTTP servers consistently and reject malformed requests.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/444.html"
+    },
+    {
+      "cwe_id": "CWE-456",
+      "name": "Missing Initialization of a Variable",
+      "description": "This weakness occurs when a variable is used before being initialized.",
+      "static_fix": "Always initialize variables before use and consider using static analysis tools to catch such issues.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/456.html"
+    },
+    {
+      "cwe_id": "CWE-470",
+      "name": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')",
+      "description": "This weakness occurs when an application uses untrusted input to determine which code to execute.",
+      "static_fix": "Avoid using reflection with user input. If necessary, implement strict allowlist validation.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/470.html"
+    },
+    {
+      "cwe_id": "CWE-476",
+      "name": "NULL Pointer Dereference",
+      "description": "This weakness occurs when a program dereferences a null pointer, leading to crashes or undefined behavior.",
+      "static_fix": "Always check pointers for null before dereferencing them to avoid crashes.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/476.html"
+    },
+    {
+      "cwe_id": "CWE-495",
+      "name": "Private Array-Typed Field Returned From A Public Method",
+      "description": "This weakness occurs when private arrays are returned directly, allowing modification of internal state.",
+      "static_fix": "Return copies of arrays or use unmodifiable collections instead of direct references.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/495.html"
+    },
+    {
+      "cwe_id": "CWE-502",
+      "name": "Deserialization of Untrusted Data",
+      "description": "This weakness occurs when an application deserializes data from an untrusted source, potentially leading to remote code execution.",
+      "static_fix": "Avoid deserializing data from untrusted sources or implement strict validation of the data before deserialization.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/502.html"
+    },
+    {
+      "cwe_id": "CWE-520",
+      "name": ".NET Misconfiguration: Use of Impersonation",
+      "description": "Specific .NET weakness where impersonation is used when it shouldn't be.",
+      "static_fix": "Avoid unnecessary impersonation or implement it with proper controls.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/520.html"
+    },
+    {
+      "cwe_id": "CWE-525",
+      "name": "Information Exposure Through Browser Caching",
+      "description": "This weakness occurs when sensitive data is stored in browser cache.",
+      "static_fix": "Set proper cache-control headers for sensitive pages and data.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/525.html"
+    },
+    {
+      "cwe_id": "CWE-540",
+      "name": "Information Exposure Through Source Code",
+      "description": "This weakness occurs when sensitive information is included in source code.",
+      "static_fix": "Never commit secrets or sensitive configuration in source code repositories.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/540.html"
+    },
+    {
+      "cwe_id": "CWE-601",
+      "name": "URL Redirection to Untrusted Site ('Open Redirect')",
+      "description": "This weakness allows an attacker to redirect users to untrusted sites, potentially leading to phishing attacks.",
+      "static_fix": "Validate and sanitize URLs before redirecting users to ensure they point to trusted domains.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/601.html"
+    },
+    {
+      "cwe_id": "CWE-611",
+      "name": "Improper Restriction of XML External Entity Reference",
+      "description": "This weakness occurs when XML processors allow external entity references.",
+      "static_fix": "Disable XML external entity processing in parsers and validate XML input.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/611.html"
+    },
+    {
+      "cwe_id": "CWE-639",
+      "name": "Authorization Bypass Through User-Controlled Key",
+      "description": "This weakness occurs when access control is based on user-modifiable keys or identifiers.",
+      "static_fix": "Implement proper authorization checks independent of user-provided identifiers.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/639.html"
+    },
+    {
+      "cwe_id": "CWE-668",
+      "name": "Exposure of Resource to Wrong Sphere",
+      "description": "This weakness occurs when a resource is accessible to unauthorized parties.",
+      "static_fix": "Implement proper access controls and compartmentalization of resources.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/668.html"
+    },
+    {
+      "cwe_id": "CWE-693",
+      "name": "Protection Mechanism Failure",
+      "description": "This weakness occurs when security controls are incorrectly implemented or can be bypassed.",
+      "static_fix": "Perform thorough security testing of protection mechanisms and follow secure coding practices.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/693.html"
+    },
+    {
+      "cwe_id": "CWE-732",
+      "name": "Incorrect Permission Assignment for Critical Resource",
+      "description": "This weakness occurs when permissions for sensitive resources are too permissive.",
+      "static_fix": "Follow principle of least privilege and implement proper access controls for all sensitive resources.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/732.html"
+    },
+    {
+      "cwe_id": "CWE-787",
+      "name": "Out-of-bounds Write",
+      "description": "This weakness occurs when a program writes data outside the boundaries of allocated memory, which can lead to data corruption or crashes.",
+      "static_fix": "Always validate the size of data being written and ensure that all memory accesses are within allocated bounds.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/787.html"
+    },
+    {
+      "cwe_id": "CWE-798",
+      "name": "Use of Hard-coded Credentials",
+      "description": "This weakness occurs when credentials are embedded directly in source code.",
+      "static_fix": "Never hardcode credentials. Use secure credential storage solutions and environment variables.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/798.html"
+    },
+    {
+      "cwe_id": "CWE-807",
+      "name": "Reliance on Untrusted Inputs in a Security Decision",
+      "description": "This weakness occurs when security decisions are based on untrusted input.",
+      "static_fix": "Never trust user input for security decisions. Verify all inputs against secure references.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/807.html"
+    },
+    {
+      "cwe_id": "CWE-862",
+      "name": "Missing Authorization",
+      "description": "This weakness occurs when an application doesn't check for authorization properly.",
+      "static_fix": "Implement proper authorization checks for all sensitive operations.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/862.html"
+    },
+    {
+      "cwe_id": "CWE-863",
+      "name": "Incorrect Authorization",
+      "description": "This weakness occurs when authorization checks are implemented incorrectly.",
+      "static_fix": "Verify authorization logic thoroughly and test edge cases.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/863.html"
+    },
+    {
+      "cwe_id": "CWE-918",
+      "name": "Server-Side Request Forgery (SSRF)",
+      "description": "This weakness allows an attacker to send crafted requests from the server to internal or external resources.",
+      "static_fix": "Implement strict input validation and limit the server's ability to make requests to trusted endpoints only.",
+      "reference_url": "https://cwe.mitre.org/data/definitions/918.html"
+    }
+  ]
+}

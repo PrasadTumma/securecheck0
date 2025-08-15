@@ -1,0 +1,321 @@
+{
+  "CWE-79": {
+    "title": "Cross-site Scripting (XSS)",
+    "summary": "Untrusted input used in the output without sanitization.",
+    "impact": "XSS can lead to data theft, session hijacking, and other malicious activities.",
+    "mitigation": "Always sanitize and validate user input before rendering it in the output.",
+    "examples": {
+      "bad": "response.write(user_input);",
+      "good": "response.write(escape(user_input));"
+    },
+    "source": "manual"
+  },
+  "CWE-89": {
+    "title": "SQL Injection",
+    "summary": "Improperly sanitized input can allow attackers to execute arbitrary SQL code.",
+    "impact": "Attackers can manipulate database queries, leading to data leakage or corruption.",
+    "mitigation": "Use prepared statements and parameterized queries to prevent SQL injection.",
+    "examples": {
+      "bad": "db.query('SELECT * FROM users WHERE id = ' + user_input);",
+      "good": "db.query('SELECT * FROM users WHERE id = ?', [user_input]);"
+    },
+    "source": "manual"
+  },
+  "CWE-22": {
+    "title": "Path Traversal",
+    "summary": "Improper validation of user-supplied input can allow access to restricted files.",
+    "impact": "Attackers can read sensitive files on the server, leading to data exposure.",
+    "mitigation": "Validate and sanitize file paths, and restrict access to sensitive directories.",
+    "examples": {
+      "bad": "open(file_path);",
+      "good": "open(sanitize_path(file_path));"
+    },
+    "source": "manual"
+  },
+  "CWE-200": {
+    "title": "Information Exposure",
+    "summary": "Sensitive information is exposed to unauthorized users.",
+    "impact": "Attackers can gain access to confidential data, leading to privacy violations.",
+    "mitigation": "Implement proper access controls and data encryption.",
+    "examples": {
+      "bad": "return user_data;",
+      "good": "return sanitize(user_data);"
+    },
+    "source": "manual"
+  },
+  "CWE-125": {
+    "title": "Out-of-bounds Read",
+    "summary": "Reading data outside the bounds of allocated memory.",
+    "impact": "Can lead to information disclosure or application crashes.",
+    "mitigation": "Always validate array indices and buffer sizes.",
+    "examples": {
+      "bad": "data = buffer[index];",
+      "good": "if (index < buffer.length) { data = buffer[index]; }"
+    },
+    "source": "manual"
+  },
+  "CWE-416": {
+    "title": "Use After Free",
+    "summary": "Accessing memory after it has been freed.",
+    "impact": "Can lead to application crashes or arbitrary code execution.",
+    "mitigation": "Set pointers to null after freeing memory.",
+    "examples": {
+      "bad": "free(ptr); use(ptr);",
+      "good": "free(ptr); ptr = NULL;"
+    },
+    "source": "manual"
+  },
+  "CWE-476": {
+    "title": "NULL Pointer Dereference",
+    "summary": "Dereferencing a null pointer can lead to application crashes.",
+    "impact": "Can cause denial of service or unexpected behavior.",
+    "mitigation": "Always check for null before dereferencing pointers.",
+    "examples": {
+      "bad": "if (ptr) { use(ptr); }",
+      "good": "if (ptr != NULL) { use(ptr); }"
+    },
+    "source": "manual"
+  },
+  "CWE-787": {
+    "title": "Out-of-bounds Write",
+    "summary": "Writing data outside the bounds of allocated memory.",
+    "impact": "Can lead to data corruption or application crashes.",
+    "mitigation": "Always validate array indices and buffer sizes before writing.",
+    "examples": {
+      "bad": "buffer[index] = value;",
+      "good": "if (index < buffer.length) { buffer[index] = value; }"
+    },
+    "source": "manual"
+  },
+  "CWE-601": {
+    "title": "URL Redirection to Untrusted Site",
+    "summary": "Improper validation of URLs can lead to redirection attacks.",
+    "impact": "Users may be redirected to malicious sites, leading to phishing attacks.",
+    "mitigation": "Validate and sanitize URLs before redirection.",
+    "examples": {
+      "bad": "redirect(user_input);",
+      "good": "redirect(validate_url(user_input));"
+    },
+    "source": "manual"
+  },
+  "CWE-703": {
+    "title": "Improper Check for Unusual or Exceptional Conditions",
+    "summary": "Failure to properly handle exceptional conditions can lead to vulnerabilities.",
+    "impact": "Can result in unexpected behavior or security flaws.",
+    "mitigation": "Implement proper error handling and logging.",
+    "examples": {
+      "bad": "if (condition) { do_something(); }",
+      "good": "try { do_something(); } catch (Exception e) { handle_error(e); }"
+    },
+    "source": "manual"
+  },
+  "CWE-74": {
+    "title": "Injection",
+    "summary": "Improperly sanitized input can allow attackers to inject malicious code.",
+    "impact": "Can lead to various types of attacks, including SQL injection and XSS.",
+    "mitigation": "Always validate and sanitize user input.",
+    "examples": {
+      "bad": "execute(user_input);",
+      "good": "execute(sanitize(user_input));"
+    },
+    "source": "manual"
+  },
+  "CWE-119": {
+    "title": "Improper Restriction of Operations within the Bounds of a Memory Buffer",
+    "summary": "Buffer overflows can occur when writing data beyond allocated memory.",
+    "impact": "Can lead to data corruption or arbitrary code execution.",
+    "mitigation": "Always check buffer sizes before writing data.",
+    "examples": {
+      "bad": "buffer[index] = value;",
+      "good": "if (index < buffer_size) { buffer[index] = value; }"
+    },
+    "source": "manual"
+  },
+  "CWE-20": {
+    "title": "Improper Input Validation",
+    "summary": "Failure to validate input can lead to various vulnerabilities.",
+    "impact": "Can result in unexpected behavior or security flaws.",
+    "mitigation": "Implement strict input validation for all user inputs.",
+    "examples": {
+      "bad": "process(user_input);",
+      "good": "if (is_valid(user_input)) { process(user_input); }"
+    },
+    "source": "manual"
+  },
+  "CWE-327": {
+    "title": "Use of a Broken or Risky Cryptographic Algorithm",
+    "summary": "Using weak cryptographic algorithms can compromise security.",
+    "impact": "Can lead to data breaches and unauthorized access.",
+    "mitigation": "Use strong, industry-standard cryptographic algorithms.",
+    "examples": {
+      "bad": "encrypt(data, 'weak_algorithm');",
+      "good": "encrypt(data, 'strong_algorithm');"
+    },
+    "source": "manual"
+  },
+  "CWE-352": {
+    "title": "Cross-Site Request Forgery (CSRF)",
+    "summary": "Attacker tricks a user into submitting a request without their consent.",
+    "impact": "Can lead to unauthorized actions on behalf of the user.",
+    "mitigation": "Implement anti-CSRF tokens to validate requests.",
+    "examples": {
+      "bad": "<form action='/action' method='POST'><input type='submit'></form>",
+      "good": "<form action='/action' method='POST'><input type='hidden' name='csrf_token' value='token'><input type='submit'></form>"
+    },
+    "source": "manual"
+  },
+  "CWE-918": {
+    "title": "Server-Side Request Forgery (SSRF)",
+    "summary": "Attacker can make requests from the server to internal resources.",
+    "impact": "Can lead to unauthorized access to internal services.",
+    "mitigation": "Validate and sanitize user input for URLs.",
+    "examples": {
+      "bad": "request(user_input);",
+      "good": "request(validate_url(user_input));"
+    },
+    "source": "manual"
+  },
+  "CWE-190": {
+    "title": "Integer Overflow or Wraparound",
+    "summary": "Arithmetic operations can exceed the maximum value of an integer.",
+    "impact": "Can lead to unexpected behavior or security vulnerabilities.",
+    "mitigation": "Validate input and check for overflows before performing arithmetic operations.",
+    "examples": {
+      "bad": "result = a + b;",
+      "good": "if (a <= MAX_INT - b) { result = a + b; }"
+    },
+    "source": "manual"
+  },
+  "CWE-191": {
+    "title": "Integer Underflow (Wrap or Wraparound)",
+    "summary": "Arithmetic operations can result in a value lower than the minimum integer.",
+    "impact": "Can lead to unexpected behavior or security vulnerabilities.",
+    "mitigation": "Validate input and check for underflows before performing arithmetic operations.",
+    "examples": {
+      "bad": "result = a - b;",
+      "good": "if (a >= b) { result = a - b; }"
+    },
+    "source": "manual"
+  },
+  "CWE-250": {
+    "title": "Execution with Unnecessary Privileges",
+    "summary": "Running applications with more privileges than necessary.",
+    "impact": "Can lead to unauthorized access and privilege escalation.",
+    "mitigation": "Run applications with the least privileges necessary.",
+    "examples": {
+      "bad": "run_as_admin();",
+      "good": "run_as_user();"
+    },
+    "source": "manual"
+  },
+  "CWE-284": {
+    "title": "Improper Access Control",
+    "summary": "Failure to restrict access to sensitive resources.",
+    "impact": "Can lead to unauthorized access and data breaches.",
+    "mitigation": "Implement proper access controls and authentication mechanisms.",
+    "examples": {
+      "bad": "allow_access(user);",
+      "good": "if (is_authorized(user)) { allow_access(user); }"
+    },
+    "source": "manual"
+  },
+  "CWE-295": {
+    "title": "Improper Certificate Validation",
+    "summary": "Failure to properly validate SSL/TLS certificates.",
+    "impact": "Can lead to man-in-the-middle attacks.",
+    "mitigation": "Always validate certificates against trusted authorities.",
+    "examples": {
+      "bad": "ssl_connect(url);",
+      "good": "ssl_connect(url, validate_cert=True);"
+    },
+    "source": "manual"
+  },
+  "CWE-732": {
+    "title": "Insecure Permissions",
+    "summary": "Improperly set permissions can expose sensitive files.",
+    "impact": "Can lead to unauthorized access to sensitive data.",
+    "mitigation": "Set appropriate permissions for files and directories.",
+    "examples": {
+      "bad": "chmod(777, file);",
+      "good": "chmod(600, file);"
+    },
+    "source": "manual"
+  },
+  "CWE-611": {
+    "title": "Improper Restriction of XML External Entity Reference",
+    "summary": "Improperly configured XML parsers can allow external entity references.",
+    "impact": "Can lead to data exposure and denial of service.",
+    "mitigation": "Disable external entity references in XML parsers.",
+    "examples": {
+      "bad": "parse_xml(user_input);",
+      "good": "parse_xml(user_input, disable_external_entities=True);"
+    },
+    "source": "manual"
+  },
+  "CWE-829": {
+    "title": "Insecure Default Initialization of Resource",
+    "summary": "Resources are initialized with insecure defaults.",
+    "impact": "Can lead to unauthorized access and data breaches.",
+    "mitigation": "Ensure resources are initialized with secure defaults.",
+    "examples": {
+      "bad": "initialize_resource();",
+      "good": "initialize_resource(secure=True);"
+    },
+    "source": "manual"
+  },
+  "CWE-327": {
+    "title": "Use of a Broken or Risky Cryptographic Algorithm",
+    "summary": "Using weak cryptographic algorithms can compromise security.",
+    "impact": "Can lead to data breaches and unauthorized access.",
+    "mitigation": "Use strong, industry-standard cryptographic algorithms.",
+    "examples": {
+      "bad": "encrypt(data, 'weak_algorithm');",
+      "good": "encrypt(data, 'strong_algorithm');"
+    },
+    "source": "manual"
+  },
+  "CWE-250": {
+    "title": "Execution with Unnecessary Privileges",
+    "summary": "Running applications with more privileges than necessary.",
+    "impact": "Can lead to unauthorized access and privilege escalation.",
+    "mitigation": "Run applications with the least privileges necessary.",
+    "examples": {
+      "bad": "run_as_admin();",
+      "good": "run_as_user();"
+    },
+    "source": "manual"
+  },
+  "CWE-284": {
+    "title": "Improper Access Control",
+    "summary": "Failure to restrict access to sensitive resources.",
+    "impact": "Can lead to unauthorized access and data breaches.",
+    "mitigation": "Implement proper access controls and authentication mechanisms.",
+    "examples": {
+      "bad": "allow_access(user);",
+      "good": "if (is_authorized(user)) { allow_access(user); }"
+    },
+    "source": "manual"
+  },
+  "CWE-295": {
+    "title": "Improper Certificate Validation",
+    "summary": "Failure to properly validate SSL/TLS certificates.",
+    "impact": "Can lead to man-in-the-middle attacks.",
+    "mitigation": "Always validate certificates against trusted authorities.",
+    "examples": {
+      "bad": "ssl_connect(url);",
+      "good": "ssl_connect(url, validate_cert=True);"
+    },
+    "source": "manual"
+  },
+  "CWE-732": {
+    "title": "Insecure Permissions",
+    "summary": "Improperly set permissions can expose sensitive files.",
+    "impact": "Can lead to unauthorized access to sensitive data.",
+    "mitigation": "Set appropriate permissions for files and directories.",
+    "examples": {
+      "bad": "chmod(777, file);",
+      "good": "chmod(600, file);"
+    },
+    "source": "manual"
+  }
+}

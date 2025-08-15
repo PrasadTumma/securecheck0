@@ -1,0 +1,49 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.egg-info/
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE configs
+.vscode/
+.idea/
+
+# Temporary files
+tmp/
+temp/
+*.log
+
+# Streamlit generated files
+.streamlit/secrets.toml
+.streamlit/
+
+# Uploaded & generated scan files
+uploads/
+temp_uploads/
+*.har
+*.pdf
+*.html
+*.csv
+
+# Large reports or outputs
+reports/
+output/
+*.db
+*.sqlite
+
+# Environment & config
+.env.local
+.env.production
+.env.development
