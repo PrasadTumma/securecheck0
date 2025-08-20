@@ -1,3 +1,15 @@
+build/
+dist/
+*.egg
+*.whl
+
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+*.ipynb_checkpoints/
+
 # Ignore SecLists wordlists
 seclists/
 SecLists/
