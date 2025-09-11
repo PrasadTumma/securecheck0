@@ -6,14 +6,17 @@ FROM ubuntu:24.04
 # -----------------------------
 # Install system dependencies
 # -----------------------------
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && apt-get install -y \
-    python3.11 python3.11-venv python3-pip \
-    openjdk-20-jdk \
+    python3 python3-venv python3-pip \
+    openjdk-21-jdk \
     nodejs npm \
     git wget curl unzip \
     build-essential \
     software-properties-common \
-    && apt-get clean
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # -----------------------------
 # Install SpotBugs
@@ -36,7 +39,7 @@ RUN npm install -g eslint
 COPY requirements.txt /app/requirements.txt
 
 # Create Python virtual environment
-RUN python3.11 -m venv /app/venv
+RUN python3 -m venv /app/venv
 ENV PATH="/app/venv/bin:$PATH"
 
 # Upgrade pip and install dependencies
