@@ -45,7 +45,7 @@ ENV PATH="/app/venv/bin:$PATH"
 # -----------------------------
 # Install Semgrep
 # -----------------------------
-RUN curl -sSL https://semgrep.dev/install.sh | sh
+RUN curl -sSL https://semgrep.dev/install.sh | bash
 
 # Upgrade pip and install dependencies
 RUN pip install --upgrade pip
