@@ -42,10 +42,10 @@ COPY requirements.txt /app/requirements.txt
 RUN python3 -m venv /app/venv
 ENV PATH="/app/venv/bin:$PATH"
 
-# Install semgrep-core before installing Python dependencies
-RUN curl -L -o semgrep-core.zip https://github.com/returntocorp/semgrep/releases/latest/download/semgrep-core-`uname -s`-`uname -m`.zip && \
-    unzip semgrep-core.zip -d /usr/local/bin/ && \
-    rm semgrep-core.zip
+# -----------------------------
+# Install Semgrep
+# -----------------------------
+RUN curl -sSL https://semgrep.dev/install.sh | sh
 
 # Upgrade pip and install dependencies
 RUN pip install --upgrade pip
