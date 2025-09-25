@@ -14,7 +14,7 @@ VALID_CWE_PATTERN = re.compile(r"^CWE-\d+$")
 # AI availability flag
 # --------------------------
 # Set to False to bypass AI completely (no API key needed)
-OPENAI_AVAILABLE = False
+#OPENAI_AVAILABLE = False
 
 # Try importing OpenAI v1.0.0 client
 #try:
