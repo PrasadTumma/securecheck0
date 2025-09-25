@@ -11,13 +11,13 @@ logger = logging.getLogger(__name__)
 VALID_CWE_PATTERN = re.compile(r"^CWE-\d+$")
 
 # Try importing OpenAI v1.0.0 client
-try:
-    from openai import OpenAI
-    openai_client = OpenAI()  # Automatically uses OPENAI_API_KEY from env
-    OPENAI_AVAILABLE = True
-except ImportError:
-    logger.warning("OpenAI SDK not installed or incompatible. AI generation will be skipped.")
-    OPENAI_AVAILABLE = False
+#try:
+ #   from openai import OpenAI
+  #  openai_client = OpenAI()  # Automatically uses OPENAI_API_KEY from env
+   # OPENAI_AVAILABLE = True
+#except ImportError:
+ #   logger.warning("OpenAI SDK not installed or incompatible. AI generation will be skipped.")
+  #  OPENAI_AVAILABLE = False'''
 
 
 class AISuggestionGenerator:
