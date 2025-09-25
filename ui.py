@@ -3,7 +3,7 @@ import streamlit as st
 # Import all UI tabs from their respective modules
 from sast.sast_ui import render_sast_tab
 from sbom.sbom_ui import render_sbom_tab
-from dast.dast_ui import render_dast_tab
+#from dast.dast_ui import render_dast_tab
 from learn.learn_ui import render_learn_tab
 
 # Optional: These can be integrated with actual CWE findings for Learn Tab
@@ -28,16 +28,16 @@ def main():
     # --- Initialize Streamlit Session State ---
     if "sast_scan_done" not in st.session_state:
         st.session_state.sast_scan_done = False
-    if "dast_scan_done" not in st.session_state:
-        st.session_state.dast_scan_done = False
+    #if "dast_scan_done" not in st.session_state:
+     #   st.session_state.dast_scan_done = False
     if "sbom_scan_done" not in st.session_state:
         st.session_state.sbom_scan_done = False
     if "sast_result" not in st.session_state:
         st.session_state.sast_result = None
     if "sbom_result" not in st.session_state:
         st.session_state.sbom_result = None
-    if "dast_result" not in st.session_state:
-        st.session_state.dast_result = None
+    #if "dast_result" not in st.session_state:
+     #   st.session_state.dast_result = None
 
     # Sidebar Navigation
     st.sidebar.title("SecureCheck")
@@ -65,8 +65,8 @@ def main():
         render_sast_tab(st.session_state)
     elif tab == "SBOM":
         render_sbom_tab(st.session_state)
-    elif tab == "DAST":
-        render_dast_tab(st.session_state)
+    #elif tab == "DAST":
+     #   render_dast_tab(st.session_state)
     elif tab == "Learn":
         render_learn_tab(example_static_cwes, example_dynamic_cwes, lesson_db)
 
