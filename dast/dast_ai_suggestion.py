@@ -10,6 +10,12 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 VALID_CWE_PATTERN = re.compile(r"^CWE-\d+$")
 
+# --------------------------
+# AI availability flag
+# --------------------------
+# Set to False to bypass AI completely (no API key needed)
+OPENAI_AVAILABLE = False
+
 # Try importing OpenAI v1.0.0 client
 #try:
  #   from openai import OpenAI
@@ -104,7 +110,7 @@ class AISuggestionGenerator:
             f"{structured_json}\n"
         )
         return prompt
-
+     
     def get_ai_suggestions(self, allow_ai: bool = True) -> str:
         if not allow_ai or not OPENAI_AVAILABLE:
             logger.info("AI suggestions skipped (disabled or unavailable).")
